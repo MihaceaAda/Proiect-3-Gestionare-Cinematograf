@@ -18,10 +18,10 @@ namespace Gestionare_Cinematograf.Clase
             Data_Final = data_Final;
             
             Durata_Rezervare = (int)(Data_Final - Data_Inceput).TotalDays;
-            Pret = CalculeazaTaxe();
+            Pret = CalculPret();
             
         }
-        private int CalculeazaTaxe()
+        private int CalculPret()
         {
             return 50 * Durata_Rezervare; 
         }
