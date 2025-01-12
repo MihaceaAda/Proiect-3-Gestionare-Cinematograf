@@ -2,7 +2,18 @@ namespace Gestionare_Cinematograf.Clase;
 
 public class Client
 {
-    protected string Nume { get; set; }
-    protected int Cod_id { get; set; }
-    protected List<string>Istoric_Rezervari{ get; set; }
+    public string Nume { get; set; }
+    public string Username { get; set; }
+    public List<string>Istoric_Rezervari{ get; set; }
+
+    public Client(string nume, string username)
+    {
+        Nume = nume;
+        Username = username;
+        Istoric_Rezervari = new List<string>();
+    }
+    
+    
+    
+    
 }
