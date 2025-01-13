@@ -25,14 +25,14 @@ namespace Gestionare_Cinematograf.Clase
         {
             return 50 * Durata_Rezervare; 
         }
-        
 
-    public override string ToString()
-    {
-        return $"Client: {Client.Nume}, Film: {Film.Titlu}, Gen: {Film.Gen}, " +
-               $"Perioada: {Data_Inceput.ToShortDateString()} - {Data_Final.ToShortDateString()}, " +
-               $"Durata: {Durata_Rezervare} zile, Pret: {Pret} RON;
-    }
+
+       // public override string ToString()
+      //  {
+            //return $"Client: {Client.Nume}, Film: {Film.Titlu}, Gen: {Film.Gen}, " +
+            // $"Perioada: {Data_Inceput.ToShortDateString()} - {Data_Final.ToShortDateString()}, " +
+            // $"Durata: {Durata_Rezervare} zile, Pret: {Pret} RON;
+       // }
 
 
     }
