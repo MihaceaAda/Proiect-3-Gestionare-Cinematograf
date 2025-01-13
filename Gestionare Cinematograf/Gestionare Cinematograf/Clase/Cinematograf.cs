@@ -1,3 +1,6 @@
+using System.Globalization;
+using System.Runtime.CompilerServices;
+
 namespace Gestionare_Cinematograf.Clase;
 
 public class Cinematograf
@@ -72,6 +75,8 @@ public class Cinematograf
         //
     }
 
+    
+
     public void CreeareRezervare(Client client)
     {
         AfisareFilmeDisponibile();
@@ -81,3 +86,90 @@ public class Cinematograf
     
     
 }
+public void AfisareIstoricRezervari()
+     {
+         if (Rezervari.Count == 0)
+         {
+             Console.WriteLine("Nu exista rezervari efectuate!");
+         }
+         Console.WriteLine("Istoric Rezervari:");
+         foreach (var rezervare in Rezervari)
+         {
+             Console.WriteLine(rezervare);
+             foreach (var rezervare in Rezervari)
+             {
+                 Console.WriteLine("Client:" + rezervare.Client.Nume + " " + rezervare.Client.Username);
+                 Console.WriteLine("Film" + rezervare.Film.Titlu);
+                 Console.WriteLine("Data Inceput: " + rezervare.Data_Inceput.ToShortDateString());
+                 Console.WriteLine("Data final" + rezervare.Data_Final.ToShortDateString());
+                 Console.WriteLine("Durata Rezervare" + rezervare.Durata_Rezervare + "de zile");
+                 Console.WriteLine("Pret" + rezervare.Pret + "Ron");
+             }
+         }
+     }
+
+public void ModificareRezervare(Client client)
+{
+    if (client.Istoric_Rezervari == null)
+    {
+        Console.WriteLine("Nu exista rezervari efectuate!");
+        return;
+    }
+
+    Console.WriteLine("Istoric Rezervari:");
+    int contor = 1; //variabila care afiseaza numarul rezervarii pentru a putea clientul sa selecteze rezervarea
+    foreach (var rezervare in istoric_Rezervari)
+    {
+        Console.WriteLine(
+            contor + "Film:" + rezervare.Film.Titlu + " Durata: " + rezervare.Data_Inceput.ToShortDateString() "-" +
+            rezervare.Data_Final.ToShortDateString());
+        contor++;
+    }
+
+    Console.WriteLine("Selecteaza rezervarea pentru modificare:");
+    int contor_client; //reprezinta variabila care tine minte numarul rezervarii selectate
+    string alegere = Console.ReadLine();
+    if (int.TryParse(alegere, out contor_client))
+    {
+        if (contor_client >= 0 && contor_client < Rezervari.Count)
+        {
+            Console.WriteLine("S-a selectat");
+
+        }
+        else
+        {
+            Console.WriteLine("Interval invalid");
+        }
+        else
+    {
+        Console.WriteLine("Optiune invalida");
+    }
+    }
+    var rezervareNoua=RezervariClient[contor_client-1];
+
+DataTime dataInceputNoua = DataTime.MinValue;
+bool valid = false;
+do
+{Console.WriteLine("Introduce noua data de inceput:");
+valid=DataTime.TryParse(Console.ReadLine(), out dataInceputNoua);
+if (!valid)
+{
+    Console.WriteLine("Optiune invalida");
+}
+} while (!valid);
+
+DataTime dataFinalNoua = DataTime.MaxValue;
+bool valid2 = false;
+do
+{   Console.WriteLine("Introduce noua data de final:");
+    valid=DataTime.TryParse(Console.ReadLine(), out dataFinalNoua);
+    if (!valid2)
+    {
+        Console.WriteLine("Optiune invalida");
+    }
+} while (!valid);
+
+}
+
+
+
