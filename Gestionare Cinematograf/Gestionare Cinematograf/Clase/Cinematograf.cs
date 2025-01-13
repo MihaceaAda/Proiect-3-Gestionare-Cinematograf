@@ -23,6 +23,11 @@ public class Cinematograf
         }
     }
 
+    public bool SuntAdministrator(string username)
+    {
+        return username == "admin";
+    }
+
     public Client AutentificareClient(string username)
     {
         foreach (var client in Clienti)
@@ -35,7 +40,44 @@ public class Cinematograf
         return null;
     }
     
-    
+    public Client InregistrareClient(string nume, string username)
+    {
+        var client= new Client(nume, username);
+        Clienti.Add(client);
+        return client;
+    }
+
+    public void AdaugareFilm()
+    {
+        Console.WriteLine("Introduceti titlul filmului: ");
+        string titlu = Console.ReadLine();
+        ///
+
+
+        Console.WriteLine("Introduceti regizorul filmului: ");
+        string regizor = Console.ReadLine();
+        Console.WriteLine("Introduceti genul filmului(Actiune/Drama");
+        string gen=Console.ReadLine();
+        Console.WriteLine("Introduceti anul lansarii filmului: ");
+        string an_lansare = Console.ReadLine();
+        Console.WriteLine("Introduceti durata filmului(in minute)");
+        string durata = Console.ReadLine();
+        
+        Program_filme.Add(new Film(titlu, regizor, gen, an_lansare, durata));
+        Console.WriteLine("Film adaugat cu succes!");
+    }
+
+    public void AfisareFilmeDisponibile()
+    {
+        //
+    }
+
+    public void CreeareRezervare(Client client)
+    {
+        AfisareFilmeDisponibile();
+
+        Console.WriteLine("");
+    }
     
     
 }

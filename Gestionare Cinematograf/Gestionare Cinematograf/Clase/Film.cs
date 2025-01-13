@@ -2,9 +2,9 @@ namespace Gestionare_Cinematograf.Clase;
 
 public abstract class Film
 {
-    protected string Titlu { get; set; }
+    public string Titlu { get; set; }
     protected string Regizor { get; set; }
-    protected string Gen { get; set; }
+    public string Gen { get; set; }
     protected int An_lansare  { get; set; }
     protected int Durata { get; set; }
     protected int Interval  { get; set; }
