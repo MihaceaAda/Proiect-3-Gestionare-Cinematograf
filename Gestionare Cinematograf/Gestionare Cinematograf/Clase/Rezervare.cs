@@ -21,7 +21,7 @@ namespace Gestionare_Cinematograf.Clase
             Pret = CalculPret();
             
         }
-        private int CalculPret()
+        public int CalculPret()
         {
             return 50 * Durata_Rezervare; 
         }

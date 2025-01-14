@@ -7,24 +7,22 @@ public abstract class Film
     public string Gen { get; set; }
     protected int An_lansare  { get; set; }
     protected int Durata { get; set; }
-    protected int Interval  { get; set; }
-    protected bool Disponibilitate { get; set; }
+    public bool Disponibilitate { get; set; }
 
-    public Film(string titlu, string regizor, string gen, int an_lansare, int durata, int interval)
+    public Film(string titlu, string regizor, string gen, int an_lansare, int durata)
     {
         Titlu = titlu;
         Regizor = regizor;
         Gen = gen;
         An_lansare = an_lansare;
         Durata = durata;
-        Interval = interval;
         Disponibilitate = true;
     }
 
     public override string ToString()
     {
-        return Titlu + " " + Regizor + " " + Gen + " " + An_lansare + " " + Durata+" "+ Disponibilitate;
+        return Titlu + " " + Regizor + " " + Gen + " " + An_lansare + " " + Durata;
     }
 
-    public abstract void Validare_Interval();
+    //public abstract void Validare_Interval();
 }

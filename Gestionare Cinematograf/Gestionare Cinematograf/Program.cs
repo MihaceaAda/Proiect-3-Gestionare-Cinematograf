@@ -12,7 +12,7 @@ class Program
         while (true)
         {
             Console.WriteLine("1.Autentificare/Inregistrare");
-            Console.WriteLine("2.Iesire");
+            Console.WriteLine("0.Iesire");
             Console.WriteLine("Alegeti optiunea dorita: ");
             string optiune1 = Console.ReadLine();
             
@@ -22,7 +22,8 @@ class Program
                 case "1":
                     Console.WriteLine("1.Administrator");
                     Console.WriteLine("2.Client");
-                    Console.WriteLine("3.Inapoi");
+                    Console.WriteLine("0.Inapoi");
+                    Console.WriteLine("Alegeti optiunea dorita: ");
                     string optiune2 = Console.ReadLine();
                     switch (optiune2)
                     {
@@ -41,7 +42,7 @@ class Program
                     }
                     break;
                 
-                case "2":
+                case "0":
                     return;
                 default:
                     Console.WriteLine("Optiune invalida. Alegeti una din optiunile disponibile");
@@ -56,10 +57,13 @@ class Program
 
    private static void MeniuAdmin(Cinematograf cinema)
     {
+        
         Console.WriteLine("Introduceti numele de utilizator: ");
         string username = Console.ReadLine();
+        Console.WriteLine("Introduceti parola: ");
+        string password = Console.ReadLine();
 
-        if (!cinema.SuntAdministrator(username))
+        if (!cinema.SuntAdministrator(username, password))
         {
             Console.WriteLine("Doar administratorul are permisiunea de a face modificari!");
             return;
@@ -76,22 +80,23 @@ class Program
             Console.WriteLine("6.Vizualizare istoric inchirieri filme per client");
             Console.WriteLine("7.Vizualizare castiguri totale");
             Console.WriteLine("8.Vizualizare castiguri pentru o anumita perioada");
-            Console.WriteLine("9.Inapoi");
+            Console.WriteLine("0.Inapoi");
+            Console.WriteLine("Alegeti optiunea dorita: ");
             string optiune=Console.ReadLine();
 
             switch (optiune)
             {
                 case "1":
-
+                    cinema.AdaugareFilm();
                     break;
                 case "2":
-                    
+                    cinema.StergereFilm();
                     break;
                 case "3":
                     
                     break;
                 case "4":
-                    
+                    cinema.StergereClient();
                     break;
                 case "5":
                     
@@ -100,12 +105,12 @@ class Program
                     
                     break;
                 case "7":
-                    
+                    cinema.VizualizareCastiguriTotale();
                     break;
                 case "8":
                     
                     break;
-                case "9":
+                case "0":
                     return;
                 default:
                     Console.WriteLine("Optiune invalida. Alegeti o optiune disponibila!");
@@ -119,12 +124,14 @@ class Program
 
     private static void MeniuClient(Cinematograf cinema)
     {
+        
         Console.WriteLine("Introduceti numele de utilizator: ");
         string username = Console.ReadLine();
 
         Client client = cinema.AutentificareClient(username);
         if (client == null)
         {
+            Console.Clear();
             Console.WriteLine("Utilizatorul nu exista. Doriti sa va inregistrati?(Da/Nu)");
             string raspuns=Console.ReadLine();
             if (raspuns == "Da")
@@ -152,10 +159,10 @@ class Program
             switch (optiune)
             {
                 case "1":
-                    
+                    cinema.VizualizareFilmeDisponibile();
                     break;
                 case "2":
-                    
+                    cinema.CreeareRezervare(client);
                     break;
                 case "3":
                     
@@ -163,7 +170,7 @@ class Program
                 case "4":
                     
                     break;
-                case "5":
+                case "0":
                     return;
                 default:
                     Console.WriteLine("Optiune invalida. Alegeti o optiune disponibila!");
