@@ -153,7 +153,7 @@ class Program
             Console.WriteLine("2.Creeare rezervare");
             Console.WriteLine("3.Modificare rezervare");
             Console.WriteLine("4.Anulare rezervare");
-            Console.WriteLine("5.Iesire");
+            Console.WriteLine("0.Iesire");
             string optiune=Console.ReadLine();
 
             switch (optiune)
