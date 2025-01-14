@@ -27,12 +27,16 @@ namespace Gestionare_Cinematograf.Clase
         }
 
 
-       // public override string ToString()
-      //  {
-            //return $"Client: {Client.Nume}, Film: {Film.Titlu}, Gen: {Film.Gen}, " +
-            // $"Perioada: {Data_Inceput.ToShortDateString()} - {Data_Final.ToShortDateString()}, " +
-            // $"Durata: {Durata_Rezervare} zile, Pret: {Pret} RON;
-       // }
+        public override string ToString()
+        {
+            return $"Rezervare pentru clientul: {Client.Nume} {Client.Username}" +
+                   $"\nFilm: {Film.Titlu}" +
+                   $"\nData început: {Data_Inceput:dd.MM.yyyy}" +
+                   $"\nData final: {Data_Final:dd.MM.yyyy}" +
+                   $"\nDurata rezervării: {Durata_Rezervare} zile" +
+                   $"\nPreț total: {Pret} RON";
+        }
+
 
 
     }
