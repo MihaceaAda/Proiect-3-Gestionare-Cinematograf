@@ -173,54 +173,88 @@ public class Cinematograf
             }
         }
     }
+
     public void CreeareRezervare(Client client)
     {
+
         if (client == null)
         {
             Console.WriteLine("Clientul nu a fost gasit!\n");
             return;
         }
-        VizualizareFilmeDisponibile();
 
-        Console.WriteLine("Introduceti filmul dorit: ");
-        string titlu = Console.ReadLine();
-        Film film = null;
-
-        foreach (var f in Program_filme)
+        try
         {
-            if (f.Titlu == titlu)
+            VizualizareFilmeDisponibile();
+
+            Console.WriteLine("Introduceti filmul dorit: ");
+            string titlu = Console.ReadLine();
+            Film film = null;
+
+            foreach (var f in Program_filme)
             {
-                film = f;
-                break;
+                if (f.Titlu == titlu)
+                {
+                    film = f;
+                    break;
+                }
             }
-        }
 
-        if (film == null || !film.Disponibilitate)
+            if (film == null || !film.Disponibilitate)
+            {
+                Console.WriteLine("Film indisponibil");
+                return;
+            }
+
+            DateTime dataInceput, dataSfarsit;
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Introduceti data de inceput (yyyy/mm/dd): ");
+                    dataInceput = DateTime.Parse(Console.ReadLine());
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Data introdusa este invalida");
+                }
+            }
+
+            while (true)
+            {
+                try
+                {
+                    Console.WriteLine("Introduceti data de sfarsit(yyyy/mm/dd): ");
+                    dataSfarsit = DateTime.Parse(Console.ReadLine());
+                    break;
+                }
+                catch (FormatException)
+                {
+                    Console.WriteLine("Data introdusa este invalida");
+                }
+            }
+
+
+            int durataRezervare = (dataSfarsit - dataInceput).Days;
+            if ((film.Gen == "Actiune" && durataRezervare > 3) || (film.Gen == "Drama" && durataRezervare > 7))
+            {
+                Console.WriteLine("S-a depasit limita permisa de rezervare!\n");
+                return;
+            }
+
+            Rezervare rezervare = new Rezervare(client, film, dataInceput, dataSfarsit);
+            Rezervari.Add(rezervare);
+            client.AdaugaRezervare(rezervare.ToString());
+            SalvareRezervareFisier(rezervare);
+            Console.WriteLine("Rezervarea a fost facuta cu succes!\n");
+        }
+        catch (Exception ex)
         {
-            Console.WriteLine("Film indisponibil");
-            return;
+            Console.WriteLine("A aparut o eroare la introducerea datei");
         }
-
-        Console.WriteLine("Introduceti data de inceput (yyyy/mm/dd): ");
-        string dataInceputstr = Console.ReadLine();
-        DateTime dataInceput = DateTime.Parse(dataInceputstr);
-        Console.WriteLine("Introduceti data de sfarsit(yyyy/mm/dd): ");
-        string dataSfarsitstr = Console.ReadLine();
-        DateTime dataSfarsit = DateTime.Parse(dataSfarsitstr);
-
-        int durataRezervare = (dataSfarsit - dataInceput).Days;
-        if ((film.Gen == "Actiune" && durataRezervare > 3) || (film.Gen == "Drama" && durataRezervare > 7))
-        {
-            Console.WriteLine("S-a depasit limita permisa de rezervare!\n");
-            return;
-        }
-
-        Rezervare rezervare = new Rezervare(client, film, dataInceput, dataSfarsit);
-        Rezervari.Add(rezervare);
-        client.AdaugaRezervare(rezervare.ToString());
-        SalvareRezervareFisier(rezervare);
-        Console.WriteLine("Rezervarea a fost facuta cu succes!\n");
     }
+
     private void SalvareRezervareFisier(Rezervare rezervare)
     {
         File.AppendAllText(IstoricRezervari, rezervare.ToString() + "\n");
