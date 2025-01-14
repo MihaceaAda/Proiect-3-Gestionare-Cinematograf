@@ -7,6 +7,7 @@ public abstract class Film
     public string Gen { get; set; }
     protected int An_lansare  { get; set; }
     protected int Durata { get; set; }
+
     public bool Disponibilitate { get; set; }
 
     public Film(string titlu, string regizor, string gen, int an_lansare, int durata)
@@ -21,8 +22,6 @@ public abstract class Film
 
     public override string ToString()
     {
-        return Titlu + " " + Regizor + " " + Gen + " " + An_lansare + " " + Durata;
+        return Titlu + " " + Regizor + " " + Gen + " " + An_lansare + " " + Durata+" "+ Disponibilitate;
     }
-
-    //public abstract void Validare_Interval();
 }
