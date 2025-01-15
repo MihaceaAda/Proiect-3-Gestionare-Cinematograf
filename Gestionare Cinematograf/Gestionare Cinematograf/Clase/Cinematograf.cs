@@ -326,7 +326,7 @@ public class Cinematograf
         bool valid = false;
         do
         {
-            Console.WriteLine("Introduce noua data de inceput: ");
+            Console.WriteLine("Introduce noua data de inceput: (format: yyyy-MM-dd)");
             valid = DateTime.TryParse(Console.ReadLine(), out dataInceputNoua);
             if (!valid)
             {
@@ -338,7 +338,7 @@ public class Cinematograf
         bool valid2 = false;
         do
         {
-            Console.WriteLine("Introduce noua data de final:");
+            Console.WriteLine("Introduce noua data de final: (format: yyyy-MM-dd)");
             valid2 = DateTime.TryParse(Console.ReadLine(), out dataFinalNoua);
             if (!valid2)
             {
@@ -363,7 +363,7 @@ public void VizualizareCastiguriPeoPerioada()
         bool valid;
           
         do
-             {  Console.WriteLine("Introduce data de inceput:");
+             {  Console.WriteLine("Introduce data de inceput: (format: yyyy-MM-dd)");
                 valid=DateTime.TryParse(Console.ReadLine(), out dataInceput);
                 if(!valid)
                     {
@@ -371,7 +371,7 @@ public void VizualizareCastiguriPeoPerioada()
                     }
              }while(!valid);
         do {
-              Console.WriteLine("Introduce data de final:");
+              Console.WriteLine("Introduce data de final: (format: yyyy-MM-dd)");
               valid=DateTime.TryParse(Console.ReadLine(), out dataFinal);
               if (!valid)
                     {
@@ -438,7 +438,7 @@ public void VizualizareCastiguriPeoPerioada()
             RezervareNoua.Data_Inceput = dataInceputN;
             RezervareNoua.Data_Final = dataFinalN;
 
-                      }
+                      }*/
  
 
 public void AnulareRezervare(Client client)
@@ -453,7 +453,7 @@ public void AnulareRezervare(Client client)
         
         foreach (var rezervare in client.Istoric_Rezervari)
             {
-                Console.WriteLine(contor +  rezervare); 
+                Console.WriteLine(contor + " " +  rezervare); 
                 contor++;
             }
         Console.WriteLine("Selectează numărul rezervării pe care dorești să o anulezi:");
@@ -466,4 +466,4 @@ public void AnulareRezervare(Client client)
         client.Istoric_Rezervari.RemoveAt(optiune-1);
         Console.WriteLine("Rezervarea a fost anulata cu succes!");
             }
-    }*/
+    }
