@@ -93,13 +93,13 @@ class Program
                     cinema.StergereFilm();
                     break;
                 case "3":
-                    
+                    cinema.ModificareRezervare();
                     break;
                 case "4":
                     cinema.StergereClient();
                     break;
-                case "5":
-                    
+                case "5": Console.WriteLine("Vizualizare castiguri totale");
+                   cinema.AfisareIstoricRezervari();
                     break;
                 case "6":
                     
@@ -108,6 +108,7 @@ class Program
                     cinema.VizualizareCastiguriTotale();
                     break;
                 case "8":
+                    cinema.VizualizareCastiguriPeoPerioada();
                     
                     break;
                 case "0":
