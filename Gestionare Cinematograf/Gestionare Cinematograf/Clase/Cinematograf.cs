@@ -441,9 +441,9 @@ public void VizualizareCastiguriPeoPerioada()
                       }*/
  
 
-public void AnulareRezervare(Client client)
+public void AnulareRezervare()
     {
-        if(client.Istoric_Rezervari.Count==0)
+        if(Rezervari.Count==0)
             {
                 Console.WriteLine("Nu exista rezervari efectuate.");
                 return;
@@ -451,7 +451,7 @@ public void AnulareRezervare(Client client)
         Console.WriteLine("istoric rezervari:");
         int contor=1;
         
-        foreach (var rezervare in client.Istoric_Rezervari)
+        foreach (var rezervare in Rezervari)
             {
                 Console.WriteLine(contor + " " +  rezervare); 
                 contor++;
@@ -463,7 +463,7 @@ public void AnulareRezervare(Client client)
                 return;
             }
             
-        client.Istoric_Rezervari.RemoveAt(optiune-1);
+        Rezervari.RemoveAt(optiune-1);
         Console.WriteLine("Rezervarea a fost anulata cu succes!");
             }
     }

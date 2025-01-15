@@ -170,7 +170,7 @@ class Program
                     
                     break;
                 case "4":
-                    cinema.AnulareRezervare(client);
+                    cinema.AnulareRezervare();
                     
                     break;
                 case "0":
