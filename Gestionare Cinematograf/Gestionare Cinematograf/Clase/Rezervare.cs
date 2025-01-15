@@ -29,12 +29,8 @@ namespace Gestionare_Cinematograf.Clase
 
         public override string ToString()
         {
-            return $"Rezervare pentru clientul: {Client.Nume} {Client.Username}" +
-                   $"\nFilm: {Film.Titlu}" +
-                   $"\nData început: {Data_Inceput:dd.MM.yyyy}" +
-                   $"\nData final: {Data_Final:dd.MM.yyyy}" +
-                   $"\nDurata rezervării: {Durata_Rezervare} zile" +
-                   $"\nPreț total: {Pret} RON";
+            return "Rezervare pentru clientul: " + Client.Nume + " " + Client.Username + "\nFilm: " + Film.Titlu + "\nData început: " + Data_Inceput.ToString("dd.MM.yyyy") +
+                   "\nData final: " + Data_Final.ToString("dd.MM.yyyy") + "\nDurata rezervării: " + Durata_Rezervare + " zile" + "\nPreț total: " + Pret + " RON";
         }
 
 
