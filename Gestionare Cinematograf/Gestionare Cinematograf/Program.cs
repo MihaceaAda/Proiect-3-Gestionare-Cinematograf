@@ -166,9 +166,11 @@ class Program
                     cinema.CreeareRezervare(client);
                     break;
                 case "3":
+                    cinema.ModificareRezervare();
                     
                     break;
                 case "4":
+                    cinema.AnulareRezervare(client);
                     
                     break;
                 case "0":
