@@ -98,7 +98,7 @@ class Program
                 case "4":
                     cinema.StergereClient();
                     break;
-                case "5": Console.WriteLine("Vizualizare castiguri totale");
+                case "5": 
                    cinema.AfisareIstoricRezervari();
                     break;
                 case "6":
